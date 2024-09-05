@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Verification Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="passwordForm">
+            <h2>Password Verification</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="retypePassword">Re-type Password</label>
+            <input type="password" id="retypePassword" name="retypePassword" required>
+
+            <button type="submit">Verify</button>
+            <p id="message"></p>
+        </form>
+    </div>
+    <script>
+
+        document.getElementById('passwordForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const retypePassword = document.getElementById('retypePassword').value;
+            const message = document.getElementById('message');
+
+            if (password === retypePassword) {
+                message.textContent = 'Passwords match. Form can be submitted.';
+                message.style.color = 'green';
+                // Here you can add form submission logic
+                // e.g., this.submit(); for regular form submission
+            } else {
+                message.textContent = 'Passwords do not match. Please try again.';
+                message.style.color = 'red';
+            }
+        });
+
+    </script>
+</body>
+
+</html>
